@@ -9,11 +9,11 @@
 activLbl <- read.table("./UCI HAR Dataset/activity_labels.txt")
 
 ## Column labels for the training data
-features <- read.table("./UCI HAR Dataset/features.txt")
-colnames(features) <- c("column","label")
+features <- read.table("./UCI HAR Dataset/features.txt", 
+                       col.names = c("column","label"))
 ## Only interested in the columns that deal with the mean and std
 ## NB- this also picks up the meanFreq() from the Fourier analysis (?need to exclude?)
-subset <- grep("[mM]ean|std",features$label, value = T)
+subset <- as.factor(grep("[mM]ean|std",features$label, value = T))
 
 ###################
 ## Training Data ##
