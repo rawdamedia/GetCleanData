@@ -37,3 +37,26 @@ subjTrain <- read.table("./UCI HAR Dataset/train/subject_train.txt",
 ## Combine into one data frame
 train <- cbind(subjTrain,train,activTrain)
 
+
+##################
+## Testing Data ##
+##################
+
+## Get the testing data and label the columns
+test <- read.table("./UCI HAR Dataset/test/X_test.txt", 
+                    col.names = features$label)
+## Get only the columns that are of interest
+test <- (test[,subset])
+
+## Read in the activity codes for each observation
+activTest <- read.table("./UCI HAR Dataset/test/y_test.txt", 
+                         col.names = "Activity")
+
+## Read in the Subject identifiers
+subjTest <- read.table("./UCI HAR Dataset/test/subject_test.txt", 
+                        col.names = "subject_ID")
+
+## Combine into one data frame
+test <- cbind(subjTest,test,activTest)
+
+
