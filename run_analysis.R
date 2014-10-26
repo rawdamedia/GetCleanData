@@ -6,7 +6,8 @@
 ## and then unzipped to create the 'UCI HAR Dataset' directory and subdirectories.
 
 ## Activity descriptions assigned to each activity code
-activLbl <- read.table("./UCI HAR Dataset/activity_labels.txt")
+activLbl <- read.table("./UCI HAR Dataset/activity_labels.txt", 
+                       col.names = c("code", "activity"))
 
 ## Column labels for the training data
 features <- read.table("./UCI HAR Dataset/features.txt", 
