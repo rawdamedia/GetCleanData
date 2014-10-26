@@ -59,4 +59,14 @@ subjTest <- read.table("./UCI HAR Dataset/test/subject_test.txt",
 ## Combine into one data frame
 test <- cbind(subjTest,test,activTest)
 
+#########################
+## Final manipulations ##
+#########################
+
+## Merge the training and testing data
+merged <- merge(train,test, all = T)
+
+## Substitute activity names for their codes
+describeActivity <- function(x){activLbl$activity[order(activLbl$code)][x]}
+merged$Activity <- sapply(merged$Activity, describeActivity)
 
