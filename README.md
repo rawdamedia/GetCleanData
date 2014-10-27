@@ -51,6 +51,10 @@ Describes the variables, the data, and any transformations or work that was perf
 
 This is the R script that performs the required data transformations - see below for a detailed description of how it achieves its task.
 
+#### 'summarised_analysis.csv' file
+
+The file that was generated to satisfy point 5 of the project requirements (see below)
+
 ## How does the 'run_analysis.R' script work?
 
 These were the project requirements:
@@ -62,4 +66,6 @@ These were the project requirements:
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 It seemed logical to carry out the steps in the following order: 4->2->1->3->5.
+
+
 
