@@ -12,9 +12,10 @@ activLbl <- read.table("./UCI HAR Dataset/activity_labels.txt",
 ## Column labels for the training data
 features <- read.table("./UCI HAR Dataset/features.txt", 
                        col.names = c("column","label"))
+features$label <- gsub(".*[,].*", "_", features$label)
 ## Only interested in the columns that deal with the mean and std
 ## NB- this also picks up the meanFreq() from the Fourier analysis (?need to exclude?)
-subset <- as.factor(grep("[mM]ean|std",features$label, value = T))
+subset <- c(grep(".*[mM]ean|std.*",features$label, value = F))
 
 ###################
 ## Training Data ##
@@ -69,4 +70,17 @@ merged <- merge(train,test, all = T)
 ## Substitute activity names for their codes
 describeActivity <- function(x){activLbl$activity[order(activLbl$code)][x]}
 merged$Activity <- sapply(merged$Activity, describeActivity)
+merged$subject_ID <- as.factor(merged$subject_ID)
 
+## Generate final table
+# library(dplyr)
+# library(tidyr)
+# mdf <- tbl_df(merged)
+# mdf %>% transmute(subject_activity = paste("subject",subject_ID,"_",Activity,sep="")) %>%
+#     group_by(subject_activity) %>%  
+#     summarise_each(funs(mean))
+
+library(reshape)
+Molten <- melt(merged, id.vars = c("subject_ID", "Activity"))
+answer <- cast(subject_ID + Activity ~ variable, data = Molten, fun = mean)
+write.csv(answer, file = "summarised_analysis.csv")
