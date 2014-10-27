@@ -4,9 +4,13 @@ The following is a description of the column headings that appear in the final f
 
 ### The first column - 'subject_ID'
 
-### The middle columns
+###The second column - 'Activity'
+
+### The remaining columns
 
 These columns were selected from the full 561 features that were analysed on the basis that they are measuring the mean or the standard deviation of the particular feature.  The meanFreq() from the Fourier analysis is also included, as it was unclear in the project instructions whether it should be excluded.
+
+In the file 'summarised_analysis.csv' the values in these columns represent the mean of all the observations in each subject's activity type.
 
 The full list of the included columns is as follows:
 
@@ -96,8 +100,6 @@ The full list of the included columns is as follows:
 - angle(X,gravityMean)
 - angle(Y,gravityMean)
 - angle(Z,gravityMean)
-
-###The last column - 'Activity'
 
 ###Feature Selection in the original data
 
