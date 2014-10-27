@@ -67,5 +67,24 @@ These were the project requirements:
 
 It seemed logical to carry out the steps in the following order: 4->2->1->3->5.
 
+Note that the number of rows in the file 'features.txt' corresponds to the number of columns in both the '/train/X_train.txt' & '/test/X_test.txt' files, so I used 'features.txt' to generate the column names of those files.  
 
+Given that:
+1. the number of rows in '/train/subject_train.txt' & '/test/subject_test.txt' correspond to the number of rows in '/train/X_train.txt' & '/test/X_test.txt', and
+2. the range of values in '/train/subject_train.txt' & '/test/subject_test.txt' were integers between 1 and 30,
+it seemed reasonable to assume that these files were the corresponding subject identifiers for the relevant observation files.  I therefore combined them with the observation files to identify which observations belong to which subject.
+
+I then used similar reasoning to match up the activity codes from '/train/y_train.txt' & '/test/y_test.txt' to the observations.
+
+For each of the training and testing data, I only kept the columns that had "mean", "Mean" or "std" in the name.  This also included the relevant columns that were the result of Fourier analasys of the data - I decided NOT to exclude them because the instruction did not make in clear whether they should be included or not.  Note that it is easier to not use data that is included, rather than having to regenerate the data that you exclude but later decide that you really want - this was my reason for erring on the side of including these columns.
+
+Once the data tables were appropriately labelled and assembled for training and testing separately, it was very easy to merge them into one data set using the merge() command.  I was then able to replace the activity codes with their descriptions as per the definitions contained in 'activity_labels.txt'.
+
+Step 5 I had the most trouble with, because for some reason I couldn't get 'dplyr' to work.  I was eventually able to use the 'reshape' package to generate the appropriate summary table, and then write it out to disk using the write.csv() function.
+
+## Instructions for reading the data summary file
+
+Assuming that the working directly is set to the directory where 'summarised_analysis.csv' resides, the summary table can be read into memory with the following command:
+
+*read.csv("summarised_analysis.csv")*
 
