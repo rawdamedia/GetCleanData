@@ -4,13 +4,17 @@ The following is a description of the column headings that appear in the final f
 
 ### The first column - 'subject_ID'
 
+This was obtained from the '/train/subject_train.txt' & '/test/subject_test.txt' files that lined up with the relevant observations in '/train/subject_train.txt' & '/test/subject_test.txt' respectively.
+
 ###The second column - 'Activity'
+
+This was obtained from the activity codes contained in the '/train/y_train.txt' & '/test/y_test.txt' files that lined up with the relevant observations in '/train/subject_train.txt' & '/test/subject_test.txt' respectively.  The activity codes were then substituted for the activity descriptions according to the 'activity_labels.txt' file.
 
 ### The remaining columns
 
-These columns were selected from the full 561 features that were analysed on the basis that they are measuring the mean or the standard deviation of the particular feature.  The meanFreq() from the Fourier analysis is also included, as it was unclear in the project instructions whether it should be excluded.
+These columns were selected from the full 561 features (as detailed in the 'features.txt' file) that were analysed on the basis that they are measuring the mean or the standard deviation of the particular feature.  The meanFreq() from the Fourier analysis is also included, as it was unclear in the project instructions whether it should be excluded.
 
-In the file 'summarised_analysis.csv' the values in these columns represent the mean of all the observations in each subject's activity type.
+In the file 'summarised_analysis.csv' the values in each row of these columns represent the mean of all the observations in each subject's activity type.
 
 The full list of the included columns is as follows:
 
