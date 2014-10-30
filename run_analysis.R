@@ -83,4 +83,6 @@ merged$subject_ID <- as.factor(merged$subject_ID)
 library(reshape)
 Molten <- melt(merged, id.vars = c("subject_ID", "Activity"))
 answer <- cast(subject_ID + Activity ~ variable, data = Molten, fun = mean)
-write.csv(answer, file = "summarised_analysis.csv")
+
+## This is to the format that was requested in the project
+write.table(answer, file = "summarised_analysis.txt", row.names = F)

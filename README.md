@@ -51,7 +51,7 @@ Describes the variables, the data, and any transformations or work that was perf
 
 This is the R script that performs the required data transformations - see below for a detailed description of how it achieves its task.
 
-#### 'summarised_analysis.csv' file
+#### 'summarised_analysis.txt' file
 
 The file that was generated to satisfy point 5 of the project requirements (see below)
 
@@ -80,11 +80,11 @@ For each of the training and testing data, I only kept the columns that had "mea
 
 Once the data tables were appropriately labelled and assembled for training and testing separately, it was very easy to merge them into one data set using the merge() command.  I was then able to replace the activity codes with their descriptions as per the definitions contained in 'activity_labels.txt'.
 
-Step 5 I had the most trouble with, because for some reason I couldn't get 'dplyr' to work.  I was eventually able to use the 'reshape' package to generate the appropriate summary table, and then write it out to disk using the write.csv() function.
+Step 5 I had the most trouble with, because for some reason I couldn't get 'dplyr' to work.  I was eventually able to use the 'reshape' package to generate the appropriate summary table, and then write it out to disk using the write.table() function (using the option row.names=FALSE).
 
 ## Instructions for reading the data summary file
 
-Assuming that the working directly is set to the directory where 'summarised_analysis.csv' resides, the summary table can be read into memory with the following command:
+Assuming that the working directly is set to the directory where 'summarised_analysis.txt' resides, the summary table can be read into memory with the following command:
 
-*read.csv("summarised_analysis.csv")*
+*read.table("summarised_analysis.txt")*
 
