@@ -73,16 +73,9 @@ merged$Activity <- sapply(merged$Activity, describeActivity)
 merged$subject_ID <- as.factor(merged$subject_ID)
 
 ## Generate final table
-# library(dplyr)
-# library(tidyr)
-# mdf <- tbl_df(merged)
-# mdf %>% transmute(subject_activity = paste("subject",subject_ID,"_",Activity,sep="")) %>%
-#     group_by(subject_activity) %>%  
-#     summarise_each(funs(mean))
-
-library(reshape)
+library(reshape2)
 Molten <- melt(merged, id.vars = c("subject_ID", "Activity"))
-answer <- cast(subject_ID + Activity ~ variable, data = Molten, fun = mean)
+answer <- dcast(subject_ID + Activity ~ variable, data = Molten, fun = mean)
 
 ## This is to the format that was requested in the project
 write.table(answer, file = "summarised_analysis.txt", row.names = F)
